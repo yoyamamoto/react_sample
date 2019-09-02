@@ -1,9 +1,8 @@
-/*
 class Head extends React.Component {
   render(){ return (
     <h1 className="Head">{this.props.message}</h1>
   )}
-}*/
+}
 
 class Form extends React.Component{
 
@@ -15,6 +14,11 @@ class Form extends React.Component{
     }
     this.inputOnChangeFunc = this.inputOnChangeFunc.bind( this );
     this.buttonOnClickFunc = this.buttonOnClickFunc.bind( this );
+
+    this.inputStyle = {
+      border:'1px solid #ccc',
+      backgroundColor:'#f3f3f3'
+    }
   }
 
   inputOnChangeFunc ({ target : { value } }) {
@@ -37,7 +41,7 @@ class Form extends React.Component{
   render () {
     return (
       <div className="Form">
-          <input type="text" value={ this.state.value } onChange={ this.inputOnChangeFunc } />
+          <input type="text" value={ this.state.value } onChange={ this.inputOnChangeFunc } style={ this.inputStyle } />
           <button onClick={ this.buttonOnClickFunc }>{ this.props.label }</button>
           <div>{ this.state.message }</div>
       </div>
@@ -45,11 +49,18 @@ class Form extends React.Component{
   }
 }
 
-class Container extends React.Component{
-  render(){ return (
-    //<Head message="REACT sample" />
-    <Form label="送信" />
-  );}
+function Name (props){
+  return <h1>Hello World! { props.name }</h1>
+}
+
+function Container() {
+  return (
+    <div>
+      <Name name="山本" />
+      <Head message="REACT sample" />
+      <Form label="送信" />
+    </div>
+  )
 }
 
 ReactDOM.render(
